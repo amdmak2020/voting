@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Bangers&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/bootstrap.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/bootstrap.min.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/amdmak.css' %}">
+  <title>Voting</title>
+</head>
+<body>
+    <div class="jumbotron">
+        <h1 class="display-4">Hello, world!</h1>
+        <p class="lead">hi guys and girls this Voting fot the best programmer in the whole world</p>
+        <hr class="my-4">
+        <p>Between Mark Zuckerberg and Ahmed HUssein</p>
+        <h1>{{ question }}</h1>
+        {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+        <form action="{% url 'polls:vote' question.id %}" method="post">
+        {% csrf_token %} 
+        {% for choice in question.choice_set.all %}
+            <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{choice.id}}" >
+            <label for="choice{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+        {% endfor%}
+        <input type="submit" name="Vote">
+        </form> 
+    </div>
+
+    <script href="{% static 'bootstrap/bootstrap.js' %}"></script>
+    <script href="{% static 'bootstrap/bootstrap.min.js' %}"></script>
+</body>
+</html>
+
+

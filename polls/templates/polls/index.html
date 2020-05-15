@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Bangers&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/bootstrap.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/bootstrap.min.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/amdmak.css' %}">
+  <title>Voting</title>
+</head>
+<body>
+  <div class="row row-cols-1 row-cols-md-3" id="kaka" >
+    <div class="col mb-4" id="amd" width="20%" height="80%" >
+      <div class="card">
+        <img src="{% static 'images/amdmak.jpg' %}" class="card-img-top" alt="..." width="20%" height="350px" >
+        <div class="card-body">
+          <h5 class="card-title">Ahmed Hussein</h5>
+          <p class="card-text">he is also a man</p>
+        </div>
+      </div>
+    </div>
+    <div class="jumbotron">
+        <h1 class="display-4">Hello, world!</h1>
+        <p class="lead">hi guys and girls this Voting fot the best programmer in the whole world</p>
+        <hr class="my-4">
+        <p>Between Mark Zuckerberg and Ahmed Hussein</p>
+        <div class="para">
+          {% if latest_question_list %}
+          <ul>
+            {% for question in latest_question_list %}
+                  <button type="button" class="btn btn-outline-danger"><li><a href="{% url 'polls:detail' question.id %}">{{question.question_text}}</a></li></button>
+                  {% endfor %}
+          </ul>
+          {% else %}
+              <p>no polls are available</p> 
+          {% endif %}
+          </div>
+    </div>
+            <div class="col mb-4" id="zac" width="20%" height="350px" right = 0px>
+          <div class="card" >
+            <img src="{% static 'images/589228_v9_ba.jpg' %}" class="card-img-top" alt="..." width="100%" height="50%" right = 0px>
+            <div class="card-body">
+              <h5 class="card-title">Mark Zuckerberg</h5>
+              <p class="card-text id">he is the CEO of the biggest site in the world which is Facebook</p>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <script href="{% static 'bootstrap/bootstrap.js' %}"></script>
+    <script href="{% static 'bootstrap/bootstrap.min.js' %}"></script>
+</body>
+</html>
